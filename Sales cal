@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Sales Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Discord Sales Calculator</h1>
+        <p>Enter your total sales below to calculate your earnings.</p>
+        <input type="number" id="sales" placeholder="Enter total sales" />
+        <button onclick="calculateEarnings()">Calculate</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateEarnings() {
+            const basePay = 40000;
+            const commissionRate = 0.10;
+            const sales = parseFloat(document.getElementById('sales').value);
+
+            if (isNaN(sales) || sales < 0) {
+                document.getElementById('result').textContent = "Please enter a valid sales amount.";
+                return;
+            }
+
+            const commission = sales * commissionRate;
+            const totalEarnings = basePay + commission;
+
+            document.getElementById('result').textContent = `Your total earnings are $${totalEarnings.toFixed(2)}.`;
+        }
+    </script>
+</body>
+</html>
